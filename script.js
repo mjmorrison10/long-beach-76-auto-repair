@@ -1,438 +1,397 @@
-// ============================================
-// Long Beach 76 Auto Repair - Interactive Scripts
-// Enhanced with animations, counters, and UX features
-// ============================================
+/* ============================================
+   LONG BEACH 76 AUTO REPAIR — "THE QUICK STOP"
+   Interactive Script
+   ============================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+(function() {
+  'use strict';
 
-    // ========================================
-    // MOBILE MENU - Smooth height transition
-    // ========================================
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
+  // --- DOM Ready ---
+  document.addEventListener('DOMContentLoaded', init);
 
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-    });
+  function init() {
+    initScrollProgress();
+    initHeaderScroll();
+    initMobileMenu();
+    initOpenClosedIndicator();
+    initScrollAnimations();
+    initBackToTop();
+    initFormValidation();
+    initClickToCallTracking();
+    setCurrentYear();
+  }
 
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.classList.remove('active');
-        });
-    });
+  // =============================================
+  // Scroll Progress Bar
+  // =============================================
+  function initScrollProgress() {
+    var progressBar = document.getElementById('scroll-progress');
+    if (!progressBar) return;
 
-    // ========================================
-    // NAVBAR - Scroll shadow effect
-    // ========================================
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
-
-    // ========================================
-    // SMOOTH SCROLL - For anchor links
-    // ========================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
-
-    // ========================================
-    // SCROLL PROGRESS BAR
-    // ========================================
-    const scrollProgress = document.getElementById('scrollProgress');
-    function updateScrollProgress() {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        scrollProgress.style.width = progress + '%';
+    function updateProgress() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(progress, 100) + '%';
     }
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
-    // ========================================
-    // BACK TO TOP BUTTON
-    // ========================================
-    const backToTop = document.getElementById('backToTop');
-    function toggleBackToTop() {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('visible');
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // =============================================
+  // Header Scroll Shadow
+  // =============================================
+  function initHeaderScroll() {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+
+    function updateHeader() {
+      if (window.pageYOffset > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+  }
+
+  // =============================================
+  // Mobile Hamburger Menu
+  // =============================================
+  function initMobileMenu() {
+    var toggle = document.getElementById('menu-toggle');
+    var nav = document.getElementById('main-nav');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', function() {
+      var isOpen = nav.classList.toggle('open');
+      toggle.classList.toggle('active', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a nav link
+    var navLinks = nav.querySelectorAll('.nav-links a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        toggle.focus();
+      }
+    });
+  }
+
+  // =============================================
+  // Open/Closed Indicator (updates every 60s)
+  // =============================================
+  function initOpenClosedIndicator() {
+    var badge = document.getElementById('open-indicator');
+    if (!badge) return;
+
+    function updateStatus() {
+      var now = new Date();
+      var day = now.getDay(); // 0=Sun, 1=Mon...6=Sat
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var time = hours + minutes / 60;
+
+      var isOpen = false;
+
+      if (day >= 1 && day <= 5) {
+        // Mon-Fri: 8AM-5PM
+        isOpen = time >= 8 && time < 17;
+      } else if (day === 6) {
+        // Saturday: 8AM-2PM
+        isOpen = time >= 8 && time < 14;
+      }
+      // Sunday: closed
+
+      var dot = badge.querySelector('.status-dot');
+      var text = badge.querySelector('.status-text');
+
+      if (isOpen) {
+        badge.className = 'status-badge open';
+        if (text) text.textContent = 'Open Now';
+      } else {
+        badge.className = 'status-badge closed';
+        if (text) text.textContent = 'Closed';
+      }
+    }
+
+    updateStatus();
+    setInterval(updateStatus, 60000); // Update every 60 seconds
+  }
+
+  // =============================================
+  // Scroll Animations (IntersectionObserver)
+  // =============================================
+  function initScrollAnimations() {
+    var elements = document.querySelectorAll('.animate-on-scroll');
+    if (!elements.length) return;
+
+    // Check for reduced motion preference
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      elements.forEach(function(el) {
+        el.classList.add('animated');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+
+  // =============================================
+  // Back to Top Button
+  // =============================================
+  function initBackToTop() {
+    var btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    function toggleVisibility() {
+      if (window.pageYOffset > 400) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+
+    btn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // =============================================
+  // Form Validation & Submission
+  // =============================================
+  function initFormValidation() {
+    var form = document.getElementById('appointment-form');
+    if (!form) return;
+
+    // Inline validation on blur
+    var requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(function(field) {
+      field.addEventListener('blur', function() {
+        validateField(field);
+      });
+
+      field.addEventListener('input', function() {
+        // Clear error on input
+        if (field.classList.contains('error')) {
+          validateField(field);
+        }
+      });
+    });
+
+    // Email validation on blur
+    var emailField = document.getElementById('email');
+    if (emailField) {
+      emailField.addEventListener('blur', function() {
+        if (emailField.value && !isValidEmail(emailField.value)) {
+          showFieldError(emailField, 'Please enter a valid email address');
         } else {
-            backToTop.classList.remove('visible');
+          clearFieldError(emailField);
         }
+      });
     }
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 
-    // ========================================
-    // ANIMATED COUNTER - Stats numbers
-    // ========================================
-    function animateCounter(element, target, duration, isDecimal, suffix) {
-        const start = 0;
-        const startTime = performance.now();
+    // Form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-        function update(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = start + (target - start) * eased;
+      var isValid = true;
 
-            if (isDecimal) {
-                element.textContent = current.toFixed(1);
-            } else {
-                element.textContent = Math.round(current) + (suffix || '');
-            }
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                element.classList.add('counted');
-            }
+      // Validate required fields
+      requiredFields.forEach(function(field) {
+        if (!validateField(field)) {
+          isValid = false;
         }
-        requestAnimationFrame(update);
-    }
+      });
 
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const count = parseFloat(el.dataset.count);
-                const isDecimal = el.dataset.decimal === 'true';
-                const suffix = el.dataset.suffix || '';
-                const originalText = el.textContent;
+      // Validate email if filled
+      if (emailField && emailField.value && !isValidEmail(emailField.value)) {
+        showFieldError(emailField, 'Please enter a valid email address');
+        isValid = false;
+      }
 
-                if (!isNaN(count)) {
-                    animateCounter(el, count, 2000, isDecimal, suffix);
-                }
-                statsObserver.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
+      if (!isValid) return;
 
-    document.querySelectorAll('[data-count]').forEach(el => {
-        statsObserver.observe(el);
-    });
+      // Collect form data
+      var data = {
+        fullName: form.fullName.value.trim(),
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        vehicleMake: form.vehicleMake.value.trim(),
+        year: form.year.value.trim(),
+        serviceNeeded: form.serviceNeeded.value,
+        issue: form.issue.value.trim()
+      };
 
-    // ========================================
-    // STAGGERED ANIMATIONS - Service cards, reviews, etc.
-    // ========================================
-    const staggerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const parent = entry.target.parentElement;
-                const siblings = Array.from(parent.querySelectorAll('[data-animate="stagger"]'));
-                const index = siblings.indexOf(entry.target);
-                const delay = index * 100;
+      // Build email body
+      var subject = 'Appointment Request - ' + data.fullName;
+      var body = 'New appointment request from lb76autorepair.com:\n\n' +
+        'Name: ' + data.fullName + '\n' +
+        'Phone: ' + data.phone + '\n' +
+        'Email: ' + (data.email || 'Not provided') + '\n' +
+        'Vehicle: ' + (data.vehicleMake || 'Not specified') + ' ' + (data.year || '') + '\n' +
+        'Service: ' + (data.serviceNeeded || 'Not specified') + '\n' +
+        'Issue: ' + (data.issue || 'Not described') + '\n\n' +
+        'Please call them within 1 hour during business hours.';
 
-                setTimeout(() => {
-                    entry.target.classList.add('animate-in');
-                    entry.target.style.opacity = '1';
-                }, delay);
+      var mailtoUrl = 'mailto:info@lb76autorepair.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-                staggerObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      // Open mailto
+      window.location.href = mailtoUrl;
 
-    document.querySelectorAll('[data-animate="stagger"]').forEach(el => {
-        staggerObserver.observe(el);
-    });
+      // Fallback: after 2 seconds, show phone number option
+      setTimeout(function() {
+        var callBtn = document.createElement('div');
+        callBtn.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:32px 40px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.2);z-index:10000;text-align:center;max-width:90vw;';
 
-    // Also handle elements without data-animate that need observation
-    const genericObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                entry.target.style.opacity = '1';
-                genericObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        callBtn.innerHTML = '<h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:12px;color:#212529;">Prefer to call instead?</h3>' +
+          '<p style="font-size:15px;color:#868e96;margin-bottom:20px;">You can reach us directly at:</p>' +
+          '<a href="tel:+15624970460" style="display:inline-flex;align-items:center;gap:8px;background:#0d6efd;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;">(562) 497-0460</a>' +
+          '<button onclick="this.parentElement.remove()" style="display:block;margin:16px auto 0;background:none;border:none;color:#868e96;font-size:14px;cursor:pointer;">Close</button>';
 
-    document.querySelectorAll('.service-card:not([data-animate]), .review-card:not([data-animate])').forEach(el => {
-        el.style.opacity = '0';
-        genericObserver.observe(el);
-    });
+        var overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:9999;';
+        overlay.onclick = function() {
+          overlay.remove();
+          callBtn.remove();
+        };
 
-    // ========================================
-    // PARALLAX HERO - Subtle parallax on hero content
-    // ========================================
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const heroHeight = document.querySelector('.hero').offsetHeight;
-            if (scrollY < heroHeight) {
-                const offset = scrollY * 0.3;
-                heroContent.style.transform = `translateY(${offset}px)`;
-            }
-        }, { passive: true });
-    }
+        document.body.appendChild(overlay);
+        document.body.appendChild(callBtn);
+      }, 2000);
 
-    // ========================================
-    // HERO PARTICLES - Floating dots
-    // ========================================
-    const heroParticles = document.getElementById('heroParticles');
-    if (heroParticles) {
-        for (let i = 0; i < 15; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'hero-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.bottom = '-10px';
-            particle.style.width = (Math.random() * 4 + 2) + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            heroParticles.appendChild(particle);
-        }
-    }
+      // Show success state on button
+      var submitBtn = document.getElementById('form-submit-btn');
+      if (submitBtn) {
+        submitBtn.textContent = 'Request Sent!';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
 
-    // ========================================
-    // SMOG PRICE SHIMMER - Periodic emphasis
-    // ========================================
-    const smogPriceCard = document.getElementById('smogPriceCard');
-    if (smogPriceCard) {
-        // Add an extra emphasis pulse every 5 seconds
-        setInterval(() => {
-            smogPriceCard.style.transform = 'scale(1.03)';
-            smogPriceCard.style.transition = 'transform 0.4s ease';
-            setTimeout(() => {
-                smogPriceCard.style.transform = 'scale(1)';
-            }, 400);
+        setTimeout(function() {
+          submitBtn.textContent = "Schedule My Appointment (We'll Call You Within 1 Hour)";
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
         }, 5000);
-    }
-
-    // ========================================
-    // CTA PULSE - Auto-add pulse to hero CTA after 3 seconds
-    // ========================================
-    setTimeout(() => {
-        document.querySelectorAll('.hero-ctas .btn-primary').forEach(btn => {
-            if (!btn.classList.contains('btn-pulse')) {
-                btn.classList.add('btn-pulse');
-            }
-        });
-    }, 3000);
-
-    // ========================================
-    // ACTIVE NAV HIGHLIGHTING - Based on scroll position
-    // ========================================
-    const sections = document.querySelectorAll('section[id]');
-    const navLinksList = document.querySelectorAll('.nav-links a[data-section]');
-
-    function highlightNav() {
-        const scrollPos = window.scrollY + 150;
-
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
-
-            if (scrollPos >= top && scrollPos < top + height) {
-                navLinksList.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.dataset.section === id) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    window.addEventListener('scroll', highlightNav, { passive: true });
-    highlightNav();
-
-    // ========================================
-    // OPEN/CLOSED INDICATOR
-    // ========================================
-    function updateOpenStatus() {
-        const statusEl = document.getElementById('openStatus');
-        if (!statusEl) return;
-        const now = new Date();
-        const day = now.getDay();
-        const hour = now.getHours();
-        let isOpen = false;
-        if (day >= 1 && day <= 5 && hour >= 8 && hour < 17) isOpen = true;
-        if (day === 6 && hour >= 8 && hour < 14) isOpen = true;
-        if (isOpen) {
-            statusEl.innerHTML = '<span style="color: #10b981; font-weight: 700;">OPEN NOW</span> Mon-Fri: 8AM-5PM | Sat: 8AM-2PM';
-        } else {
-            statusEl.innerHTML = '<span style="color: #ef4444; font-weight: 700;">CLOSED</span> Mon-Fri: 8AM-5PM | Sat: 8AM-2PM';
-        }
-        const mobileHours = document.getElementById('mobileHours');
-        if (mobileHours) {
-            if (isOpen) {
-                mobileHours.innerHTML = '<span style="color: #10b981; font-weight: 700;">OPEN</span> until ' + (day === 6 ? '2PM' : '5PM');
-            } else {
-                mobileHours.textContent = 'Opens Mon 8AM';
-            }
-        }
-    }
-    updateOpenStatus();
-    setInterval(updateOpenStatus, 60000);
-
-    // ========================================
-    // FORM VALIDATION - Real-time with visual feedback
-    // ========================================
-    const contactForm = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone');
-    const emailInput = document.getElementById('email');
-    const nameError = document.getElementById('nameError');
-    const phoneError = document.getElementById('phoneError');
-    const emailError = document.getElementById('emailError');
-
-    function validateName() {
-        const val = nameInput.value.trim();
-        if (val.length === 0) {
-            nameInput.classList.remove('valid', 'invalid');
-            nameError.textContent = '';
-            return false;
-        }
-        if (val.length < 2) {
-            nameInput.classList.add('invalid');
-            nameInput.classList.remove('valid');
-            nameError.textContent = 'Name must be at least 2 characters';
-            return false;
-        }
-        nameInput.classList.add('valid');
-        nameInput.classList.remove('invalid');
-        nameError.textContent = '';
-        return true;
-    }
-
-    function validatePhone() {
-        const val = phoneInput.value.trim();
-        if (val.length === 0) {
-            phoneInput.classList.remove('valid', 'invalid');
-            phoneError.textContent = '';
-            return false;
-        }
-        const phoneRegex = /[\d\s\-\(\)\+]{7,}/;
-        if (!phoneRegex.test(val)) {
-            phoneInput.classList.add('invalid');
-            phoneInput.classList.remove('valid');
-            phoneError.textContent = 'Please enter a valid phone number';
-            return false;
-        }
-        phoneInput.classList.add('valid');
-        phoneInput.classList.remove('invalid');
-        phoneError.textContent = '';
-        return true;
-    }
-
-    function validateEmail() {
-        const val = emailInput.value.trim();
-        if (val.length === 0) {
-            emailInput.classList.remove('valid', 'invalid');
-            emailError.textContent = '';
-            return true; // Email is optional
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(val)) {
-            emailInput.classList.add('invalid');
-            emailInput.classList.remove('valid');
-            emailError.textContent = 'Please enter a valid email address';
-            return false;
-        }
-        emailInput.classList.add('valid');
-        emailInput.classList.remove('invalid');
-        emailError.textContent = '';
-        return true;
-    }
-
-    nameInput.addEventListener('input', validateName);
-    nameInput.addEventListener('blur', validateName);
-    phoneInput.addEventListener('input', validatePhone);
-    phoneInput.addEventListener('blur', validatePhone);
-    emailInput.addEventListener('input', validateEmail);
-    emailInput.addEventListener('blur', validateEmail);
-
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const isNameValid = validateName();
-        const isPhoneValid = validatePhone();
-        const isEmailValid = validateEmail();
-
-        if (!isNameValid || !isPhoneValid || !isEmailValid) {
-            // Trigger validation on empty required fields
-            if (nameInput.value.trim().length === 0) {
-                nameInput.classList.add('invalid');
-                nameError.textContent = 'Name is required';
-            }
-            if (phoneInput.value.trim().length === 0) {
-                phoneInput.classList.add('invalid');
-                phoneError.textContent = 'Phone number is required';
-            }
-            return;
-        }
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
-        const subject = encodeURIComponent(`Appointment Request - ${data.make || 'Vehicle'} ${data.year || ''}`);
-        const body = encodeURIComponent(
-            `Name: ${data.name}\nPhone: ${data.phone}\nEmail: ${data.email || 'N/A'}\n` +
-            `Vehicle: ${data.make || 'N/A'} ${data.year || ''}\nService: ${data.service || 'N/A'}\n` +
-            `Issue: ${data.message || 'N/A'}\n\nPlease call me to schedule an appointment.`
-        );
-        window.location.href = `mailto:info@lb76autorepair.com?subject=${subject}&body=${body}`;
-        // Fallback if email client doesn't open
-        setTimeout(() => {
-            if (!document.hidden) {
-                const formNote = document.querySelector('.form-note');
-                if (formNote) {
-                    const originalNote = formNote.textContent;
-                    formNote.innerHTML = 'Email didn\'t open? Call us directly at <a href="tel:5624970460" style="color: var(--primary); font-weight: 700;">(562) 497-0460</a>';
-                    setTimeout(() => {
-                        formNote.textContent = originalNote;
-                    }, 8000);
-                }
-            }
-        }, 2000);
-        const btn = this.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '&#10003; Request Sent!';
-        btn.style.background = '#10b981';
-        btn.style.borderColor = '#10b981';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.style.background = '';
-            btn.style.borderColor = '';
-            this.reset();
-            // Clear validation states
-            nameInput.classList.remove('valid', 'invalid');
-            phoneInput.classList.remove('valid', 'invalid');
-            emailInput.classList.remove('valid', 'invalid');
-            nameError.textContent = '';
-            phoneError.textContent = '';
-            emailError.textContent = '';
-        }, 3000);
+      }
     });
+  }
 
-    // ========================================
-    // CLICK-TO-CALL TRACKING WITH LOCATION
-    // ========================================
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-        link.addEventListener('click', () => {
-            let location = 'unknown';
-            if (link.closest('.hero')) location = 'hero';
-            else if (link.closest('.urgency-banner')) location = 'urgency-banner';
-            else if (link.closest('.smog-cta')) location = 'smog-cta';
-            else if (link.closest('.cta-section')) location = 'cta-section';
-            else if (link.closest('.mobile-cta')) location = 'mobile-cta';
-            else if (link.closest('.contact')) location = 'contact-section';
-            else if (link.closest('.footer')) location = 'footer';
+  function validateField(field) {
+    var value = field.value.trim();
+    var fieldName = field.id;
+    var errorEl = document.getElementById(fieldName + '-error');
 
-            if (typeof gtag === 'function') {
-                gtag('event', 'click_to_call', { business: 'Long Beach 76 Auto Repair', click_location: location });
-            }
-        });
+    if (field.hasAttribute('required') && !value) {
+      var labels = {
+        'fullName': 'Please enter your full name',
+        'phone': 'Please enter your phone number'
+      };
+      var msg = labels[fieldName] || 'This field is required';
+      showFieldError(field, msg);
+      return false;
+    }
+
+    if (fieldName === 'phone' && value) {
+      var phoneClean = value.replace(/[\s\-\(\)\.]/g, '');
+      if (phoneClean.length < 10) {
+        showFieldError(field, 'Please enter a valid phone number');
+        return false;
+      }
+    }
+
+    clearFieldError(field);
+    return true;
+  }
+
+  function showFieldError(field, message) {
+    field.classList.add('error');
+    var errorEl = document.getElementById(field.id + '-error');
+    if (errorEl) {
+      errorEl.textContent = message;
+    }
+  }
+
+  function clearFieldError(field) {
+    field.classList.remove('error');
+    var errorEl = document.getElementById(field.id + '-error');
+    if (errorEl) {
+      errorEl.textContent = '';
+    }
+  }
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // =============================================
+  // Click-to-Call Tracking (gtag)
+  // =============================================
+  function initClickToCallTracking() {
+    var callLinks = document.querySelectorAll('[data-gtag]');
+    callLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        var eventType = link.getAttribute('data-gtag');
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_to_call', {
+            event_category: 'engagement',
+            event_label: eventType,
+            value: 1
+          });
+        }
+        // Fallback: console log for development
+        if (window.console && console.log) {
+          console.log('[gtag] click_to_call:', eventType);
+        }
+      });
     });
+  }
 
-});
+  // =============================================
+  // Set Current Year in Footer
+  // =============================================
+  function setCurrentYear() {
+    var yearEl = document.getElementById('current-year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
+  }
+
+})();
