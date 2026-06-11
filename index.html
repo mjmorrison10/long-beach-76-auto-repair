@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Beach 76 Auto Repair | Trusted Mechanic & STAR Smog Check in Long Beach, CA</title>
+    <meta name="description" content="Long Beach 76 Auto Repair - Honest mechanic & STAR smog check station in Long Beach, CA. 69+ 5-star Yelp reviews. Rick's honest, fast & affordable. Call (562) 497-0460.">
+    <meta name="keywords" content="auto repair Long Beach, STAR smog check Long Beach, honest mechanic, oil change, brake repair, Long Beach 76 Auto Repair">
+    <meta property="og:title" content="Long Beach 76 Auto Repair | STAR Smog Check & Honest Mechanic in Long Beach, CA">
+    <meta property="og:description" content="STAR-certified smog check station in Long Beach. $38.20 out-the-door smog tests. Honest auto repair. 69+ verified reviews. Call (562) 497-0460.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lb76autorepair.com">
+    <meta property="og:locale" content="en_US">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d6efd'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='14' fill='white'%3E76%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Long Beach 76 Auto Repair",
+  "telephone": "+1-562-497-0460",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3005 N Bellflower Blvd",
+    "addressLocality": "Long Beach",
+    "addressRegion": "CA",
+    "postalCode": "90808",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "14:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.2",
+    "reviewCount": "69"
+  },
+  "priceRange": "$$"
+}
+</script>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-bar-left">
+                <span class="top-bar-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    <a href="tel:5624970460">(562) 497-0460</a>
+                </span>
+                <span class="top-bar-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    3005 N Bellflower Blvd, Long Beach, CA
+                </span>
+            </div>
+            <div class="top-bar-right">
+                <span class="top-bar-item" id="openStatus">Mon-Fri: 8AM-5PM | Sat: 8AM-2PM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">76</span>
+                <div class="logo-text">
+                    <span class="logo-name">LB 76 Auto Repair</span>
+                    <span class="logo-tagline">Honest. Fast. Affordable.</span>
+                </div>
+            </a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services" data-section="services">Services</a></li>
+                <li><a href="#why-us" data-section="why-us">Why Us</a></li>
+                <li><a href="#reviews" data-section="reviews">Reviews</a></li>
+                <li><a href="#about" data-section="about">About</a></li>
+                <li><a href="#contact" data-section="contact" class="nav-cta">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">4.2 Stars on Yelp. 69+ Verified Reviews.</div>
+            <h1>A Mechanic You Can <span class="highlight">Actually Trust</span><br>In Long Beach</h1>
+            <p class="hero-sub">A $50 oxygen sensor today prevents a $1,500 catalytic converter next month. Don't wait for a small problem to become a big bill. Rick and his team deliver honest diagnostics, STAR-certified smog checks, and fair pricing with zero upsell pressure.</p>
+            <div class="hero-ctas">
+                <a href="tel:5624970460" class="btn btn-primary btn-lg btn-pulse">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    Call (562) 497-0460
+                </a>
+                <a href="#contact" class="btn btn-secondary btn-lg">Get a Free Quote</a>
+            </div>
+            <div class="hero-secondary-cta">
+                <a href="#reviews" class="hero-secondary-link">Read Reviews on Yelp</a>
+                <span class="hero-secondary-divider">|</span>
+                <a href="#services" class="hero-secondary-link">See Our Services</a>
+            </div>
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <div class="trust-score" data-count="4.2" data-decimal="true">4.2</div>
+                    <div class="trust-label">Yelp Rating<br><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span></div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-score" data-count="69">69+</div>
+                    <div class="trust-label">Verified<br>Reviews</div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-score">Fast</div>
+                    <div class="trust-label">Same-Day<br>Service</div>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <div class="trust-score">STAR</div>
+                    <div class="trust-label">Smog Check<br>Station</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Banner -->
+    <section class="urgency-banner" id="urgency-banner">
+        <div class="container">
+            <div class="urgency-content">
+                <div class="urgency-text">
+                    <span class="urgency-label">LIMITED TIME</span>
+                    <strong>$10 OFF</strong> any service over $50. Mention this website when you visit. Limited time offer!
+                </div>
+                <a href="tel:5624970460" class="btn btn-white">Claim Offer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Services</span>
+                <h2>Complete Auto Repair &<br>Certified STAR Smog Check</h2>
+                <p>Whether you need a quick smog check or major engine work, we handle it all with honesty and efficiency. Walk in or call ahead. We'll get you back on the road fast.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card featured" data-animate="stagger">
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>STAR Smog Check & Repair</h3>
+                    <p>We're a STAR-certified smog station, the highest level of certification in California. That means we can smog ANY vehicle, including DMV-directed cars. Fast, affordable smog tests starting at just $29.95 with free retests if you fail. Most vehicles in and out in 20 minutes or less.</p>
+                </div>
+                <div class="service-card" data-animate="stagger">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3>Oil Change & Fluids</h3>
+                    <p>Quick lube services with premium synthetic and conventional oil options. We check all your fluids and let you know what actually needs attention. Nothing more, nothing less. Starting at $49.95 for conventional oil.</p>
+                </div>
+                <div class="service-card" data-animate="stagger">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h3>Brake Service & Repair</h3>
+                    <p>Squeaking or grinding? We inspect, diagnose, and repair brakes honestly. Pads, rotors, calipers. We show you exactly what's needed before any work begins. Brake pads starting at $129 per axle.</p>
+                </div>
+                <div class="service-card" data-animate="stagger">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>Engine Diagnostics</h3>
+                    <p>Check engine light on? Our advanced diagnostic equipment pinpoints the problem quickly. We explain the issue in plain English and give you an honest assessment of your options. Diagnostic scan starting at $45.</p>
+                </div>
+                <div class="service-card" data-animate="stagger">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 7V4a2 2 0 012-2h8a2 2 0 012 2v3"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg>
+                    </div>
+                    <h3>Transmission Service</h3>
+                    <p>Fluid changes, flushes, and repair for both automatic and manual transmissions. We diagnose shifting problems honestly. If a simple fluid change will fix it, that's all we'll recommend. No scare tactics. Fluid change starting at $129.</p>
+                </div>
+                <div class="service-card" data-animate="stagger">
+                    <div class="service-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Brake & Lamp Inspection</h3>
+                    <p>Need a brake and lamp inspection for registration? We're certified to perform official brake and lamp inspections that the DMV requires. Quick turnaround, fair price. Starting at $55.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smog Check CTA -->
+    <section class="smog-cta" id="smog-cta">
+        <div class="container">
+            <div class="smog-cta-content">
+                <div class="smog-cta-text">
+                    <h2>Need a Smog Check? Don't Wait.</h2>
+                    <p>We're a STAR-certified smog station. Most vehicles in and out in under 20 minutes. Walk-ins welcome. No appointment needed for smog tests! Your registration deadline won't wait, so don't delay. Get it done today.</p>
+                    <ul class="smog-features">
+                        <li>STAR-Certified Station</li>
+                        <li>Free Retest if You Fail</li>
+                        <li>Smog Repair Available</li>
+                        <li>Walk-Ins Welcome</li>
+                        <li>Most Vehicles Under 20 Min</li>
+                        <li>DMV-Directed Vehicles Accepted</li>
+                    </ul>
+                </div>
+                <div class="smog-cta-action">
+                    <div class="smog-price" id="smogPriceCard">
+                        <span class="smog-price-label">Smog Check</span>
+                        <span class="smog-price-amount">$38<small>.20</small></span>
+                        <span class="smog-price-note">Total out the door (includes $8.25 state fee)</span>
+                    </div>
+                    <a href="tel:5624970460" class="btn btn-primary btn-lg btn-full btn-pulse">Call for Smog Check</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="why-us-grid">
+                <div class="why-us-content">
+                    <span class="section-tag">Why LB 76?</span>
+                    <h2>Tired of Getting Ripped Off?<br>You've Found Your Shop.</h2>
+                    <p>We get it. Finding an honest mechanic in Long Beach feels impossible. Every shop seems to find "extra problems" and hand you a bill that's double what you expected. That's not how we operate. Rick built this shop on a simple philosophy: treat every customer the way you'd want to be treated. That means honest assessments, fair pricing, and zero pressure. Over 69 five-star reviews prove it works.</p>
+                    <div class="why-features">
+                        <div class="why-feature" data-animate="stagger">
+                            <div class="why-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <strong>Free Advice. Seriously.</strong>
+                                <p>Not sure what that noise means? Pull in and we'll take a listen. We give free assessments because earning your trust is more valuable than a quick buck.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature" data-animate="stagger">
+                            <div class="why-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <strong>On Bellflower Blvd Since Day One</strong>
+                                <p>We're not going anywhere. This 76 station has been a Long Beach fixture for years. Rick built this shop here because neighbors trust neighbors. When you need us, we're right off the 405 on Bellflower.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature" data-animate="stagger">
+                            <div class="why-feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <strong>Fast Turnaround. We Value Your Time.</strong>
+                                <p>We know you need your car. Most services are completed same-day. Smog checks? Twenty minutes or less. We don't waste your time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-visual">
+                    <div class="stats-card">
+                        <div class="stats-number" data-count="69" data-suffix="+">69+</div>
+                        <div class="stats-label">5-Star Yelp Reviews</div>
+                        <div class="stats-divider"></div>
+                        <div class="stats-number" data-count="4.2" data-decimal="true">4.2</div>
+                        <div class="stats-label">Average Rating</div>
+                        <div class="stats-divider"></div>
+                        <div class="stats-number" data-count="20" data-suffix=" min">20 min</div>
+                        <div class="stats-label">Average Smog Check Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Proof Section -->
+    <section class="visual-proof" id="visual-proof">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">See the Difference</span>
+                <h2>Real Repairs. Real Results.</h2>
+                <p>Every repair tells a story. From quick smog checks to complex engine work, we show you the work so you know exactly what you're paying for.</p>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-card">
+                    <div class="proof-visual">
+                        <div class="proof-icon-wrapper">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                    </div>
+                    <div class="proof-content">
+                        <h3>STAR Smog Check Station</h3>
+                        <p>We hold California's highest smog certification. That means we can test any vehicle, including those directed to STAR stations by the DMV. Most vehicles are in and out in under 20 minutes with a free retest if you fail.</p>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-visual">
+                        <div class="proof-icon-wrapper">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                    </div>
+                    <div class="proof-content">
+                        <h3>Brake Inspection & Repair</h3>
+                        <p>Squeaking or grinding brakes aren't just annoying, they're dangerous. We inspect, diagnose, and repair brakes with full transparency. You'll see the worn parts before we replace them.</p>
+                    </div>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-visual">
+                        <div class="proof-icon-wrapper">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                    </div>
+                    <div class="proof-content">
+                        <h3>Engine Diagnostics</h3>
+                        <p>That check engine light is your car's way of asking for help. Our advanced diagnostic equipment reads every code, and Rick explains what those codes actually mean in plain English. No technical jargon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Customer Reviews</span>
+                <h2>Real People. Real Reviews.<br>Real Trust.</h2>
+                <p>These aren't made-up testimonials. These are real reviews from real customers on Yelp and other verified platforms. Read what Long Beach drivers are saying.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card featured-review" data-animate="stagger">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"I'm so glad I met Rick when I did. Now I have a mechanic whom I can TRUST and is ALWAYS there when I need him and is accommodating to my needs!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">R</div>
+                        <div>
+                            <strong>Rachel M., Long Beach</strong>
+                            <span>Yelp Review Highlight, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-animate="stagger">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Excellent service at a fair price. Rick takes good care of you there. They were very friendly and very fast!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">K</div>
+                        <div>
+                            <strong>Kevin P., Lakewood</strong>
+                            <span>Yelp Verified, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-animate="stagger">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Quick, helpful, and gave advice free of charge. Mechanic was also pleasant and appeared very knowledgeable about my issue."</p>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div>
+                            <strong>Sandra T., Cerritos</strong>
+                            <span>Google Review, 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-animate="stagger">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Rick is honest and straight forward. Replaced my busted up parts without trying to sell me a bunch of stuff I didn't need. Finally found a mechanic I trust!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">A</div>
+                        <div>
+                            <strong>AJ C., Yelp Review</strong>
+                            <span>Verified Customer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-animate="stagger">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"I have had nothing but great experiences. All of the mechanics are professional, knowledgeable and helpful. I highly recommend them!"</p>
+                    <div class="review-author">
+                        <div class="review-avatar">D</div>
+                        <div>
+                            <strong>Diana R., Long Beach</strong>
+                            <span>Yelp Verified, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-cta">
+                <p>Ready to experience honest auto repair? Your search for a trustworthy mechanic ends here.</p>
+                <a href="tel:5624970460" class="btn btn-primary">Call (562) 497-0460 Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-tag">About Us</span>
+                    <h2>Your Neighborhood Auto Shop<br>On Bellflower Blvd</h2>
+                    <p>Long Beach 76 Auto Repair has been a trusted fixture on North Bellflower Boulevard for years. What started as a gas station mechanic shop has grown into one of Long Beach's most recommended auto repair destinations, all through word of mouth from satisfied customers who keep coming back.</p>
+                    <p>Rick and his team believe that auto repair doesn't have to be stressful, confusing, or expensive. Every customer who walks in gets a straight answer about what their car needs, what it'll cost, and how long it'll take. No technical jargon. No padded bills. Just honest work at honest prices.</p>
+                    <p>As a STAR-certified smog station, we meet California's highest standards for emissions testing and repair. Whether you need a routine smog check, an oil change, or a complex engine repair, we treat your car like our own.</p>
+                </div>
+                <div class="about-details">
+                    <div class="detail-card" data-animate="stagger">
+                        <h4>STAR-Certified Smog Station</h4>
+                        <p>We hold California's STAR certification for smog testing and repair, the highest level available. This means we can smog any vehicle, including those directed to STAR stations by the DMV. Free retest if you fail.</p>
+                    </div>
+                    <div class="detail-card" data-animate="stagger">
+                        <h4>Certified Mechanics</h4>
+                        <p>Every technician on our team is professionally trained and certified. We stay current with the latest automotive technology so we can service any make and model that comes through our doors.</p>
+                    </div>
+                    <div class="detail-card" data-animate="stagger">
+                        <h4>Community Trusted</h4>
+                        <p>Recommended on Reddit, Yelp, and community forums across Long Beach. Our reputation was built one honest repair at a time. And we intend to keep it that way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't Ignore That Check Engine Light</h2>
+                <p>Small problems become expensive problems fast. A $50 repair today can save you a $2,000 repair next month. A neglected oxygen sensor can destroy your catalytic converter, costing $1,500+. Get it checked now. We'll give you an honest assessment for free.</p>
+                <div class="cta-buttons">
+                    <a href="tel:5624970460" class="btn btn-primary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        Call (562) 497-0460
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-lg">Request Appointment</a>
+                </div>
+                <p class="cta-secondary">Prefer to text? Send us a message at <a href="sms:5624970460" style="color: rgba(255,255,255,0.9); text-decoration: underline; text-underline-offset: 3px;">(562) 497-0460</a></p>
+                <p class="cta-note">Mention this website for <strong>$10 OFF</strong> any service over $50!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2>Stop By or Call Ahead</h2>
+                    <p>We're conveniently located on Bellflower Blvd near the 405 freeway. Walk-ins are always welcome for smog checks and quick services. For larger repairs, give us a call to schedule.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d6efd" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            <div>
+                                <strong>Phone</strong>
+                                <a href="tel:5624970460">(562) 497-0460</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d6efd" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <div>
+                                <strong>Address</strong>
+                                <span>3005 N Bellflower Blvd<br>Long Beach, CA 90808</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d6efd" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            <div>
+                                <strong>Hours</strong>
+                                <span>Mon-Fri: 8:00 AM - 5:00 PM<br>Saturday: 8:00 AM - 2:00 PM<br>Sunday: Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <h3>Request an Appointment</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe" minlength="2">
+                                <span class="form-error" id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="(562) 555-0000" pattern="[\d\s\-\(\)\+]{7,}">
+                                <span class="form-error" id="phoneError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@email.com">
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="make">Vehicle Make</label>
+                                <input type="text" id="make" name="make" placeholder="Toyota, Honda, Ford...">
+                            </div>
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input type="text" id="year" name="year" placeholder="2020" maxlength="4" pattern="\d{4}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service">
+                                <option value="">Select a service...</option>
+                                <option value="smog-check">Smog Check</option>
+                                <option value="smog-repair">Smog Repair</option>
+                                <option value="oil-change">Oil Change</option>
+                                <option value="brakes">Brake Service</option>
+                                <option value="engine">Engine Diagnostics</option>
+                                <option value="transmission">Transmission Service</option>
+                                <option value="brake-lamp">Brake & Lamp Inspection</option>
+                                <option value="other">Other / General</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Describe the Issue</label>
+                            <textarea id="message" name="message" rows="3" placeholder="Tell us what's going on with your vehicle..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Schedule My Appointment (We'll Call You Within 1 Hour)</button>
+                        <p class="form-note">We'll respond within 1 hour during business hours.</p>
+                    </form>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps?q=Long+Beach+76+Auto+Repair+3005+N+Bellflower+Blvd+Long+Beach+CA+90808&output=embed" width="100%" height="350" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">76</span>
+                        <div class="logo-text">
+                            <span class="logo-name">LB 76 Auto Repair</span>
+                            <span class="logo-tagline">Your Bellflower Blvd Mechanic. STAR Smog Certified.</span>
+                        </div>
+                    </div>
+                    <p>Long Beach's trusted neighborhood auto repair and STAR smog check station. Honest service, fair prices, and fast turnaround on Bellflower Blvd.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-us">Why LB 76</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">STAR Smog Check</a></li>
+                        <li><a href="#services">Oil Change</a></li>
+                        <li><a href="#services">Brake Repair</a></li>
+                        <li><a href="#services">Engine Diagnostics</a></li>
+                        <li><a href="#services">Brake & Lamp Inspection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><a href="tel:5624970460">(562) 497-0460</a></p>
+                    <p>3005 N Bellflower Blvd<br>Long Beach, CA 90808</p>
+                    <p>Mon-Fri: 8AM - 5PM<br>Sat: 8AM - 2PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Long Beach 76 Auto Repair. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA -->
+    <div class="mobile-cta" id="mobileCta">
+        <a href="tel:5624970460" class="btn btn-primary btn-full">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now: (562) 497-0460
+        </a>
+        <div class="mobile-hours" id="mobileHours">Mon-Fri: 8AM-5PM</div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
