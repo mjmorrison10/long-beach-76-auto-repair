@@ -554,6 +554,18 @@ button:focus-visible {
 .proof-content h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
 .proof-content p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
 
+/* Before/After Comparison */
+.proof-comparison { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.proof-before, .proof-after { text-align: center; flex: 1; }
+.proof-ba-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.proof-before .proof-ba-label { color: #ef4444; }
+.proof-after .proof-ba-label { color: #10b981; }
+.proof-ba-icon { width: 64px; height: 64px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.proof-ba-icon.worn { background: #fef2f2; border: 2px dashed #fca5a5; }
+.proof-ba-icon.fixed { background: #f0fdf4; border: 2px solid #86efac; }
+.proof-arrow { font-size: 24px; color: var(--gray-400); flex-shrink: 0; }
+@media (max-width: 768px) { .proof-comparison { gap: 8px; } .proof-ba-icon { width: 48px; height: 48px; } }
+
 /* ============================================
    HERO SECONDARY CTA
    ============================================ */
