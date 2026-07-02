@@ -272,7 +272,7 @@
         'Issue: ' + (data.issue || 'Not described') + '\n\n' +
         'Please call them within 1 hour during business hours.';
 
-      var mailtoUrl = 'mailto:info@lb76autorepair.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var mailtoUrl = 'mailto:[EMAIL ADDRESS]?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
       // Open mailto
       window.location.href = mailtoUrl;
@@ -284,7 +284,7 @@
 
         callBtn.innerHTML = '<h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;margin-bottom:12px;color:#212529;">Prefer to call instead?</h3>' +
           '<p style="font-size:15px;color:#868e96;margin-bottom:20px;">You can reach us directly at:</p>' +
-          '<a href="tel:+15624970460" style="display:inline-flex;align-items:center;gap:8px;background:#0d6efd;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;">(562) 497-0460</a>' +
+          '<a href="tel:5551234567" style="display:inline-flex;align-items:center;gap:8px;background:#0d6efd;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;font-size:16px;text-decoration:none;">(555) 123-4567</a>' +
           '<button onclick="this.parentElement.remove()" style="display:block;margin:16px auto 0;background:none;border:none;color:#868e96;font-size:14px;cursor:pointer;">Close</button>';
 
         var overlay = document.createElement('div');
